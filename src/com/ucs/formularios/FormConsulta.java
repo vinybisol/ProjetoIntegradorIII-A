@@ -1,6 +1,9 @@
 package com.ucs.formularios;
 
+import com.ucs.util.FuncoesGerais;
+
 import javax.swing.*;
+import java.awt.*;
 import java.awt.event.*;
 
 public class FormConsulta extends JDialog {
@@ -8,15 +11,17 @@ public class FormConsulta extends JDialog {
     private JButton btnOKConsulta;
     private JButton btnCancelarConsulta;
     private JTextField textIDConsulta;
-    private JComboBox comboPaciente;
     private JTextField textDataConsulta;
     private JTextField textHorarioConsulta;
     private JTextField textNomeMedico;
+    private JTextField textPaciente;
+    private boolean _campoAlterado;
 
     public FormConsulta() {
         setContentPane(contentPane);
         setModal(true);
         getRootPane().setDefaultButton(btnOKConsulta);
+        _campoAlterado = false;
 
         btnOKConsulta.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
@@ -61,17 +66,17 @@ public class FormConsulta extends JDialog {
 
 
     private void VerificaCampoVazioAbreTela(){
-        String text = textNomeMedico.getText().trim();
-        if(text.isEmpty()){
-            FormCadConsulta dialog = new FormCadConsulta();
-            dialog.pack();
-            dialog.setVisible(true);
-            textNomeMedico.setText(dialog.NomeDoMedico);
-        }
+        _campoAlterado = true;
+        FormCadConsulta dialog = new FormCadConsulta();
+        dialog.pack();
+        dialog.setVisible(true);
+        textNomeMedico.setText(dialog.NomeDoMedico);
     }
     private void onOK() {
         // add your code here
-        dispose();
+        if(ValidaCampos()){
+            dispose();
+        }
     }
 
     private void onCancel() {
@@ -88,5 +93,20 @@ public class FormConsulta extends JDialog {
 
     private void createUIComponents() {
         // TODO: place custom component creation code here
+    }
+    private boolean ValidaCampos(){
+        if(textNomeMedico.getText().isEmpty()){
+            FuncoesGerais.MensagemInforma("Obrigatório medico", false);
+            return  false;
+        }
+        if(textPaciente.getText().isEmpty()){
+            FuncoesGerais.MensagemInforma("Obrigatório Paciente", false);
+            return  false;
+        }
+        if(!_campoAlterado){
+            FuncoesGerais.MensagemInforma("Os campos devem ser preenchidos", false);
+            return  false;
+        }
+        return true;
     }
 }

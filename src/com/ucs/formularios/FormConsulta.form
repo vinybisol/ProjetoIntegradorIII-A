@@ -112,12 +112,6 @@
               <font name="Inconsolata" size="14"/>
             </properties>
           </component>
-          <component id="9e2fb" class="javax.swing.JComboBox" binding="comboPaciente">
-            <constraints>
-              <grid row="3" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="2" anchor="8" fill="1" indent="0" use-parent-layout="false"/>
-            </constraints>
-            <properties/>
-          </component>
           <component id="1f2be" class="javax.swing.JTextField" binding="textDataConsulta">
             <constraints>
               <grid row="4" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
@@ -142,6 +136,18 @@
             </constraints>
             <properties>
               <font name="Inconsolata" size="14"/>
+              <text value="Clique para adicionar"/>
+            </properties>
+          </component>
+          <component id="93c9f" class="javax.swing.JTextField" binding="textPaciente">
+            <constraints>
+              <grid row="3" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
+                <preferred-size width="150" height="-1"/>
+              </grid>
+            </constraints>
+            <properties>
+              <font name="Inconsolata" size="14"/>
+              <text value="Clique para adicionar"/>
             </properties>
           </component>
         </children>
