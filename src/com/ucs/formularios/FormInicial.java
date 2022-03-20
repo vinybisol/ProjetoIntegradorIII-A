@@ -68,9 +68,9 @@ public class FormInicial extends JDialog {
         });
     }
     private void onBtnCadConsulta(){
-        var telaCadConsulta = new FormCadConsulta();
-        telaCadConsulta.pack();
-        telaCadConsulta.setVisible(true);
+        var telaConsulta = new FormConsulta();
+        telaConsulta.pack();
+        telaConsulta.setVisible(true);
     }
     private void setBtnSelConsulta(){
         var telaConsulta = new FormConsulta();

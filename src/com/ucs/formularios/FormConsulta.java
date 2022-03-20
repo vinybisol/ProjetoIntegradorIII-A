@@ -8,10 +8,10 @@ public class FormConsulta extends JDialog {
     private JButton btnOKConsulta;
     private JButton btnCancelarConsulta;
     private JTextField textIDConsulta;
-    private JComboBox comboMedico;
     private JComboBox comboPaciente;
     private JTextField textDataConsulta;
     private JTextField textHorarioConsulta;
+    private JTextField textNomeMedico;
 
     public FormConsulta() {
         setContentPane(contentPane);
@@ -50,8 +50,25 @@ public class FormConsulta extends JDialog {
                 dispose();
             }
         });
+        textNomeMedico.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                super.mouseClicked(e);
+                VerificaCampoVazioAbreTela();
+            }
+        });
     }
 
+
+    private void VerificaCampoVazioAbreTela(){
+        String text = textNomeMedico.getText().trim();
+        if(text.isEmpty()){
+            FormCadConsulta dialog = new FormCadConsulta();
+            dialog.pack();
+            dialog.setVisible(true);
+            textNomeMedico.setText(dialog.NomeDoMedico);
+        }
+    }
     private void onOK() {
         // add your code here
         dispose();
@@ -67,5 +84,9 @@ public class FormConsulta extends JDialog {
         dialog.pack();
         dialog.setVisible(true);
         System.exit(0);
+    }
+
+    private void createUIComponents() {
+        // TODO: place custom component creation code here
     }
 }
