@@ -1,9 +1,10 @@
 package com.ucs.formularios;
 
+import com.ucs.dados.ListaDeConsultas;
+import com.ucs.modelos.Consulta;
 import com.ucs.util.FuncoesGerais;
 
 import javax.swing.*;
-import java.awt.*;
 import java.awt.event.*;
 
 public class FormConsulta extends JDialog {
@@ -75,6 +76,14 @@ public class FormConsulta extends JDialog {
     private void onOK() {
         // add your code here
         if(ValidaCampos()){
+            var consult = new Consulta(){};
+            consult.ID = Integer.parseInt(textIDConsulta.getText());
+            consult.Medico = textNomeMedico.getText();
+            consult.Paciente = textPaciente.getText();
+            consult.DataHora = textDataConsulta.getText();
+            consult.DataHora = consult.DataHora + textDataConsulta.getText();
+            ListaDeConsultas.incluirNoFim(consult);
+            FuncoesGerais.MensagemInforma("Consulta cadastrada", false);
             dispose();
         }
     }

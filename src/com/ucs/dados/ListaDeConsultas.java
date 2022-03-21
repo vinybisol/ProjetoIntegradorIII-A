@@ -2,17 +2,22 @@ package com.ucs.dados;
 
 import com.ucs.modelos.Consulta;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class ListaDeConsultas {
-    public void incluirNoInicio (Consulta umaConsulta){
+    public static List<Consulta> _listaConsulta = new ArrayList<>();
+
+    public static void incluirNoInicio (Consulta umaConsulta){
 
     }
-    public void incluirNoFim (Consulta umaConsulta){
-
+    public static void incluirNoFim (Consulta umaConsulta){
+        _listaConsulta.add(umaConsulta);
     }
-    public int tamanho (){
+    public static int tamanho (){
        return 4;
     }
-    public Consulta get(int indice){
+    public static Consulta get(int indice){
         return new Consulta();
     }
 }
