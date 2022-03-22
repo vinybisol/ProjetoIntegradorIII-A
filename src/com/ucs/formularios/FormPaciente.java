@@ -1,11 +1,11 @@
 package com.ucs.formularios;
 
+import com.ucs.dados.ListaDePaciente;
 import com.ucs.modelos.Paciente;
 
 import javax.swing.*;
 import java.awt.event.*;
 
-import static com.ucs.dados.ListaDePaciente._listaPaciente;
 
 public class FormPaciente extends JDialog {
     private JPanel contentPane;
@@ -57,7 +57,8 @@ public class FormPaciente extends JDialog {
         paciente.Nome = textNomePaciente.getText();
         paciente.CPF = textCPFPaciemte.getText();
         paciente.Endereco = textEndereçoPaciente.getText();
-        _listaPaciente.add(paciente);
+        ListaDePaciente.adicionarPaciente(paciente);
+
          dispose();
     }
     private void onOK() {

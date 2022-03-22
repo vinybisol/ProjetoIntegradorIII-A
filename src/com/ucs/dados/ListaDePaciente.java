@@ -7,6 +7,13 @@ import java.util.List;
 
 
 public class ListaDePaciente {
-    public static List <Paciente> _listaPaciente = new ArrayList<Paciente>();
+    private static List <Paciente> _listaPaciente = new ArrayList();
+
+    public static List<Paciente> retornaTodos(){
+        return _listaPaciente;
+    }
+    public static void adicionarPaciente(Paciente paciente){
+        _listaPaciente.add(paciente);
+    }
 
 }

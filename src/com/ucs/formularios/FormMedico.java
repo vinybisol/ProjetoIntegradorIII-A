@@ -1,11 +1,11 @@
 package com.ucs.formularios;
 
+import com.ucs.dados.ListaDeMedico;
 import com.ucs.modelos.Medico;
 
 import javax.swing.*;
 import java.awt.event.*;
 
-import static com.ucs.dados.ListaDeMedico._listaMedico;
 
 public class FormMedico extends JDialog {
     private JPanel contentPane;
@@ -54,7 +54,7 @@ public class FormMedico extends JDialog {
         medico.Nome = textNomeMedico.getText();
         medico.CPF = textCPFMedico.getText();
         medico.Especialidade = textEspecialidadeMedico.getText();
-        _listaMedico.add(medico);
+        ListaDeMedico.adicionarMedico(medico);
 
 
         dispose();

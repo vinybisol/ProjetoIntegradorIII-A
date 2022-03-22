@@ -9,7 +9,9 @@ public class FormInicial extends JDialog {
     private JButton btnSelMedico;
     private JButton btnCancelarInicial;
     private JButton btnSelConsulta;
-    private JButton btnCadConsulta;
+    private JButton btnVerPacientes;
+    private JButton btnVerMedicos;
+    private JButton btnVerConsultas;
     private JButton buttonOK;
 
     public FormInicial() {
@@ -60,15 +62,26 @@ public class FormInicial extends JDialog {
             }
         });
 
-        btnCadConsulta.addActionListener(new ActionListener() {
+        btnVerPacientes.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 onBtnCadConsulta();
             }
         });
+        btnVerMedicos.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                onBtnVerMedicos();
+            }
+        });
+    }
+    private void onBtnVerMedicos(){
+        var telaVerMedicos = new FormVerMedicos();
+        telaVerMedicos.pack();
+        telaVerMedicos.setVisible(true);
     }
     private void onBtnCadConsulta(){
-        var telaConsulta = new FormConsulta();
+        var telaConsulta = new FormVerPacientes();
         telaConsulta.pack();
         telaConsulta.setVisible(true);
     }
