@@ -12,6 +12,7 @@ public class ListaDeConsultas {
 
     }
     public static void incluirNoFim (Consulta umaConsulta){
+
         _listaConsulta.add(umaConsulta);
     }
     public static int tamanho (){
