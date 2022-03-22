@@ -2,13 +2,14 @@ package com.ucs.formularios;
 
 import com.ucs.dados.ListaDeMedico;
 import com.ucs.modelos.Medico;
+import com.ucs.util.FuncoesGerais;
 
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 import java.awt.event.*;
 import java.util.List;
 
-import static com.ucs.dados.ListaDeMedico._listaMedico;
+
 
 public class FormCadConsulta extends JDialog {
     private JPanel contentPane;
@@ -55,7 +56,12 @@ public class FormCadConsulta extends JDialog {
     }
 
     private void MostrarMedicosPorEspecialidade(){
-        List<Medico> listaDeMedicos = ListaDeMedico.RetornaListaDeMedicoPorEspecialidade(textField1.getText());
+        List<Medico> listaDeMedicos = ListaDeMedico.retornaListaDeMedicoPorEspecialidade(textField1.getText());
+        if(listaDeMedicos.size() == 0){
+            FuncoesGerais.MensagemInforma("Não existe médicos cadastrados com a especialidade solicitada!",false);
+            dispose();
+            return;
+        }
         CriarListaMedicos(listaDeMedicos);
 
     }
@@ -65,7 +71,7 @@ public class FormCadConsulta extends JDialog {
 
     private void createUIComponents() {
         // TODO: place custom component creation code here
-        CriarListaMedicos(_listaMedico);
+        CriarListaMedicos(ListaDeMedico.retornaTodos());
 
     }
 
