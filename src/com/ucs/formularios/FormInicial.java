@@ -74,6 +74,17 @@ public class FormInicial extends JDialog {
                 onBtnVerMedicos();
             }
         });
+        btnVerConsultas.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                onBtnVerConsultas();
+            }
+        });
+    }
+    private void onBtnVerConsultas(){
+        var telaVerConsultas = new FormVerConsultas();
+        telaVerConsultas.pack();
+        telaVerConsultas.setVisible(true);
     }
     private void onBtnVerMedicos(){
         var telaVerMedicos = new FormVerMedicos();
