@@ -107,7 +107,7 @@ public class FormConsulta extends JDialog {
 
     private void VerificaCampoVazioAbreTelaMedico(){
         _campoAlterado = true;
-        FormCadConsulta dialog = new FormCadConsulta();
+        FormSelecionarMedicoEspecialidade dialog = new FormSelecionarMedicoEspecialidade();
         dialog.pack();
         dialog.setVisible(true);
         textNomeMedico.setText(dialog.NomeDoMedico);

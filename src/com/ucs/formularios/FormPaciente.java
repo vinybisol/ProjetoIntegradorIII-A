@@ -21,6 +21,7 @@ public class FormPaciente extends JDialog {
         setContentPane(contentPane);
         setModal(true);
         getRootPane().setDefaultButton(buttonOK);
+        setTitle("Cadastro de paciente");
 
 
 

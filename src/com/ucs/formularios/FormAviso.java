@@ -9,6 +9,7 @@ public class FormAviso extends JDialog {
     public JButton buttonCancel;
     public JLabel lbMensagem;
 
+
     public FormAviso() {
         setContentPane(contentPane);
         setModal(true);

@@ -19,6 +19,7 @@ public class FormMedico extends JDialog {
         setContentPane(contentPane);
         setModal(true);
         getRootPane().setDefaultButton(btnOKMedico);
+        setTitle("Cadastro de medico");
 
 
 

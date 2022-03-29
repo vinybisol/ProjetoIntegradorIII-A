@@ -23,10 +23,12 @@ public class FormBuscaPaciente extends JDialog {
     private DefaultTableModel model;
     public String NomePaciente;
 
+
     public FormBuscaPaciente() {
         setContentPane(contentPane);
         setModal(true);
         getRootPane().setDefaultButton(buttonOK);
+        setTitle("Buscar Paciente");
         btnBuscarPaciente.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {

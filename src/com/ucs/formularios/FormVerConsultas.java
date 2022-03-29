@@ -23,11 +23,13 @@ public class FormVerConsultas extends JDialog {
     private JButton btnFiltar;
     private DefaultTableModel model;
 
+
     public FormVerConsultas() {
         setContentPane(contentPane);
         setModal(true);
         getRootPane().setDefaultButton(buttonOK);
         CriarListaConsultas(ListaDeConsultas.retornaTodos());
+        setTitle("Ver consultas");
         buttonCancel.addActionListener(new ActionListener() {
 
             @Override
