@@ -85,7 +85,8 @@ public class FormVerPacientes extends JDialog {
         model.getDataVector().removeAllElements();
         model.setColumnCount(0);
         if(listaDePaciente.stream().count() > 0) // se for maior que 0 executa:
-            listaDePaciente.forEach(paciente -> model.addRow(new Object[]{paciente.Nome, paciente.CPF, paciente.Endereco}));
+                model.addRow(new Object[]{"Paciente", "CPF", "Endereço"});
+        listaDePaciente.forEach(paciente -> model.addRow(new Object[]{paciente.Nome, paciente.CPF, paciente.Endereco}));
         table1.setModel(model);
         table1.revalidate();
     }

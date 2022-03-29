@@ -6,6 +6,8 @@ import com.ucs.util.FuncoesGerais;
 
 import javax.swing.*;
 import java.awt.event.*;
+import java.text.SimpleDateFormat;
+import java.util.concurrent.ExecutionException;
 
 public class FormConsulta extends JDialog {
     private JPanel contentPane;
@@ -23,7 +25,7 @@ public class FormConsulta extends JDialog {
         setModal(true);
         getRootPane().setDefaultButton(btnOKConsulta);
         _campoAlterado = false;
-
+        textIDConsulta.setText(String.valueOf(ListaDeConsultas.proximoId()));
         btnOKConsulta.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 onOK();

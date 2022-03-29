@@ -1,15 +1,13 @@
 package com.ucs.formularios;
 
 import com.ucs.dados.ListaDeConsultas;
-import com.ucs.dados.ListaDeMedico;
 import com.ucs.modelos.Consulta;
-import com.ucs.modelos.Medico;
 
 import javax.swing.*;
-import java.awt.event.*;
 import javax.swing.table.DefaultTableModel;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -19,18 +17,29 @@ public class FormVerConsultas extends JDialog {
     private JButton buttonOK;
     private JButton buttonCancel;
     private JTable table1;
+    private JLabel lbFiltro;
+    private JTextField textFiltroMedico;
+    private JTextField textFiltroPaciente;
+    private JButton btnFiltar;
     private DefaultTableModel model;
 
     public FormVerConsultas() {
         setContentPane(contentPane);
         setModal(true);
         getRootPane().setDefaultButton(buttonOK);
+        CriarListaConsultas(ListaDeConsultas.retornaTodos());
         buttonCancel.addActionListener(new ActionListener() {
 
             @Override
 
             public void actionPerformed(ActionEvent e) {
                 dispose();
+            }
+        });
+        btnFiltar.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                FiltarConsulta();
             }
         });
     }
@@ -58,6 +67,13 @@ public class FormVerConsultas extends JDialog {
         listaConsulta.forEach(consulta -> model.addRow(new Object[]{consulta.ID, consulta.DataHora, consulta.Medico, consulta.Paciente}));
         table1.setModel(model);
         table1.revalidate();
+    }
+
+    private void FiltarConsulta(){
+        String filtroMedico = textFiltroMedico.getText();
+        String filtroPaciente = textFiltroPaciente.getText();
+        var listaFiltrada = ListaDeConsultas.retornaFiltrada(filtroMedico, filtroPaciente);
+        CriarListaConsultas(listaFiltrada);
     }
 }
 

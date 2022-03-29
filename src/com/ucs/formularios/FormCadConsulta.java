@@ -25,6 +25,12 @@ public class FormCadConsulta extends JDialog {
         setContentPane(contentPane);
         setModal(true);
         getRootPane().setDefaultButton(buttonOK);
+
+
+
+
+
+
         btnCancelCadConsulta.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) { dispose(); }
