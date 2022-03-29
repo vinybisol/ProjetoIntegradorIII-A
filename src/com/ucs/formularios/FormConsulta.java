@@ -6,8 +6,6 @@ import com.ucs.util.FuncoesGerais;
 
 import javax.swing.*;
 import java.awt.event.*;
-import java.text.SimpleDateFormat;
-import java.util.concurrent.ExecutionException;
 
 public class FormConsulta extends JDialog {
     private JPanel contentPane;
@@ -18,6 +16,9 @@ public class FormConsulta extends JDialog {
     private JTextField textHorarioConsulta;
     private JTextField textNomeMedico;
     private JTextField textPaciente;
+    private JTextField DataDiaConsulta;
+    private JTextField DataAnoConsulta;
+    private JTextField DataMesConsulta;
     private boolean _campoAlterado;
 
     public FormConsulta() {
