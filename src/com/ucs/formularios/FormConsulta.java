@@ -63,18 +63,32 @@ public class FormConsulta extends JDialog {
             @Override
             public void mouseClicked(MouseEvent e) {
                 super.mouseClicked(e);
-                VerificaCampoVazioAbreTela();
+                VerificaCampoVazioAbreTelaMedico();
+            }
+        });
+        textPaciente.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                super.mouseClicked(e);
+                VerificaCampoVazioAbreTelaPaciente();
             }
         });
     }
 
 
-    private void VerificaCampoVazioAbreTela(){
+    private void VerificaCampoVazioAbreTelaMedico(){
         _campoAlterado = true;
         FormCadConsulta dialog = new FormCadConsulta();
         dialog.pack();
         dialog.setVisible(true);
         textNomeMedico.setText(dialog.NomeDoMedico);
+    }
+    private void VerificaCampoVazioAbreTelaPaciente(){
+        _campoAlterado = true;
+        FormBuscaPaciente dialog = new FormBuscaPaciente();
+        dialog.pack();
+        dialog.setVisible(true);
+        textPaciente.setText(dialog.NomePaciente);
     }
     private void onOK() {
         // add your code here

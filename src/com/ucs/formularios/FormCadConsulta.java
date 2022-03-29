@@ -15,8 +15,8 @@ public class FormCadConsulta extends JDialog {
     private JPanel contentPane;
     private JButton buttonOK;
     private JButton btnCancelCadConsulta;
-    private JTextField textField1;
-    private JButton btnBuscarMedico;
+    private JTextField textBuscaPaciente;
+    private JButton btnBuscarPaciente;
     private JTable table1;
     private DefaultTableModel model;
     public String NomeDoMedico;
@@ -25,17 +25,11 @@ public class FormCadConsulta extends JDialog {
         setContentPane(contentPane);
         setModal(true);
         getRootPane().setDefaultButton(buttonOK);
-
-
-
-
-
-
         btnCancelCadConsulta.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) { dispose(); }
         });
-        btnBuscarMedico.addActionListener(new ActionListener() {
+        btnBuscarPaciente.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 MostrarMedicosPorEspecialidade();
@@ -62,7 +56,7 @@ public class FormCadConsulta extends JDialog {
     }
 
     private void MostrarMedicosPorEspecialidade(){
-        List<Medico> listaDeMedicos = ListaDeMedico.retornaListaDeMedicoPorEspecialidade(textField1.getText());
+        List<Medico> listaDeMedicos = ListaDeMedico.retornaListaDeMedicoPorEspecialidade(textBuscaPaciente.getText());
         if(listaDeMedicos.size() == 0){
             FuncoesGerais.MensagemInforma("Não existe médicos cadastrados com a especialidade solicitada!",false);
             dispose();

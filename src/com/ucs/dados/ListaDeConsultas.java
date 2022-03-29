@@ -24,7 +24,6 @@ public class ListaDeConsultas {
     }
 
     public static long proximoId() {
-
         long tamanhoDaLista = tamanho();
         return  tamanhoDaLista ++;
     }
