@@ -64,7 +64,7 @@ public class FormVerConsultas extends JDialog {
         model.setColumnCount(0);
         if (listaConsulta.stream().count() > 0) // se for maior que 0 executa:
             model.addRow(new Object[]{"ID", "Data/Hora", "Paciente", "Medico"});
-        listaConsulta.forEach(consulta -> model.addRow(new Object[]{consulta.ID, consulta.DataHora, consulta.Medico, consulta.Paciente}));
+        listaConsulta.forEach(consulta -> model.addRow(new Object[]{consulta.ID, consulta.Data, consulta.Medico, consulta.Paciente}));
         table1.setModel(model);
         table1.revalidate();
     }
