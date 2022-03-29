@@ -20,11 +20,15 @@ public class FormConsulta extends JDialog {
     private JTextField DataAnoConsulta;
     private JTextField DataMesConsulta;
     private boolean _campoAlterado;
+    private boolean _campoDiaAlterado;
+    private boolean _campoMesAlterado;
+    private boolean _campoAnoAlterado;
 
     public FormConsulta() {
         setContentPane(contentPane);
         setModal(true);
         getRootPane().setDefaultButton(btnOKConsulta);
+        setTitle("Cadastro de consulta");
         _campoAlterado = false;
         textIDConsulta.setText(String.valueOf(ListaDeConsultas.proximoId()));
         btnOKConsulta.addActionListener(new ActionListener() {
@@ -63,18 +67,57 @@ public class FormConsulta extends JDialog {
             @Override
             public void mouseClicked(MouseEvent e) {
                 super.mouseClicked(e);
-                VerificaCampoVazioAbreTela();
+                VerificaCampoVazioAbreTelaMedico();
+            }
+        });
+        textPaciente.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                super.mouseClicked(e);
+                VerificaCampoVazioAbreTelaPaciente();
+            }
+        });
+
+        DataDiaConsulta.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                super.mouseClicked(e);
+                LimparCampos(DataDiaConsulta);
+                _campoDiaAlterado = true;
+            }
+        });
+        DataMesConsulta.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                super.mouseClicked(e);
+                LimparCampos(DataMesConsulta);
+                _campoMesAlterado = true;
+            }
+        });
+        DataAnoConsulta.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                super.mouseClicked(e);
+                LimparCampos(DataAnoConsulta);
+                _campoAnoAlterado = true;
             }
         });
     }
 
 
-    private void VerificaCampoVazioAbreTela(){
+    private void VerificaCampoVazioAbreTelaMedico(){
         _campoAlterado = true;
         FormCadConsulta dialog = new FormCadConsulta();
         dialog.pack();
         dialog.setVisible(true);
         textNomeMedico.setText(dialog.NomeDoMedico);
+    }
+    private void VerificaCampoVazioAbreTelaPaciente(){
+        _campoAlterado = true;
+        FormBuscaPaciente dialog = new FormBuscaPaciente();
+        dialog.pack();
+        dialog.setVisible(true);
+        textPaciente.setText(dialog.NomePaciente);
     }
     private void onOK() {
         // add your code here
@@ -83,8 +126,7 @@ public class FormConsulta extends JDialog {
             consult.ID = Integer.parseInt(textIDConsulta.getText());
             consult.Medico = textNomeMedico.getText();
             consult.Paciente = textPaciente.getText();
-            consult.DataHora = textDataConsulta.getText();
-            consult.DataHora = consult.DataHora + textDataConsulta.getText();
+            consult.Data = DataDiaConsulta.getText() + "/" + DataMesConsulta.getText() + "/" + DataAnoConsulta.getText();
             ListaDeConsultas.incluirNoFim(consult);
             FuncoesGerais.MensagemInforma("Consulta cadastrada", false);
             dispose();
@@ -115,10 +157,17 @@ public class FormConsulta extends JDialog {
             FuncoesGerais.MensagemInforma("Obrigatório Paciente", false);
             return  false;
         }
-        if(!_campoAlterado){
+        if(DataAnoConsulta.getText().isEmpty() || DataMesConsulta.getText().isEmpty() || DataDiaConsulta.getText().isEmpty()){
+            FuncoesGerais.MensagemInforma("O campo data não pode ficar vazio", false);
+        }
+        if(!_campoAlterado || !_campoDiaAlterado || !_campoMesAlterado || !_campoAnoAlterado){
             FuncoesGerais.MensagemInforma("Os campos devem ser preenchidos", false);
             return  false;
         }
         return true;
+    }
+
+    private void LimparCampos(JTextField campoGenerico){
+        campoGenerico.setText("");
     }
 }
