@@ -11,7 +11,7 @@ import java.util.List;
 
 
 
-public class FormCadConsulta extends JDialog {
+public class FormSelecionarMedicoEspecialidade extends JDialog {
     private JPanel contentPane;
     private JButton buttonOK;
     private JButton btnCancelCadConsulta;
@@ -21,10 +21,11 @@ public class FormCadConsulta extends JDialog {
     private DefaultTableModel model;
     public String NomeDoMedico;
 
-    public FormCadConsulta() {
+    public FormSelecionarMedicoEspecialidade() {
         setContentPane(contentPane);
         setModal(true);
         getRootPane().setDefaultButton(buttonOK);
+        setTitle("Seleção do médico por especialidade");
         btnCancelCadConsulta.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) { dispose(); }

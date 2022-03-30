@@ -18,6 +18,7 @@ public class FormInicial extends JDialog {
         setContentPane(contentPane);
         setModal(true);
         getRootPane().setDefaultButton(buttonOK);
+        setTitle("Selecionar o que precisa");
 
 
 
