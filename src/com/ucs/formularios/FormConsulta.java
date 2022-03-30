@@ -78,28 +78,50 @@ public class FormConsulta extends JDialog {
             }
         });
 
-        DataDiaConsulta.addMouseListener(new MouseAdapter() {
+        DataDiaConsulta.addFocusListener(new FocusAdapter() {
             @Override
-            public void mouseClicked(MouseEvent e) {
-                super.mouseClicked(e);
+            public void focusGained(FocusEvent e) {
+                super.focusGained(e);
+                DataDiaConsulta.setName("dia");
                 LimparCampos(DataDiaConsulta);
-                _campoDiaAlterado = true;
             }
         });
-        DataMesConsulta.addMouseListener(new MouseAdapter() {
+        DataMesConsulta.addFocusListener(new FocusAdapter() {
             @Override
-            public void mouseClicked(MouseEvent e) {
-                super.mouseClicked(e);
+            public void focusGained(FocusEvent e) {
+                super.focusGained(e);
+                DataMesConsulta.setName("mes");
                 LimparCampos(DataMesConsulta);
-                _campoMesAlterado = true;
             }
         });
-        DataAnoConsulta.addMouseListener(new MouseAdapter() {
+        DataAnoConsulta.addFocusListener(new FocusAdapter() {
             @Override
-            public void mouseClicked(MouseEvent e) {
-                super.mouseClicked(e);
+            public void focusGained(FocusEvent e) {
+                super.focusGained(e);
+                DataAnoConsulta.setName("ano");
                 LimparCampos(DataAnoConsulta);
-                _campoAnoAlterado = true;
+            }
+        });
+
+        DataDiaConsulta.addKeyListener(new KeyAdapter() {
+            @Override
+            public void keyTyped(KeyEvent e) {
+                super.keyTyped(e);
+                FuncoesGerais.SomenteNumeros(e);
+            }
+        });
+        DataMesConsulta.addKeyListener(new KeyAdapter() {
+            @Override
+            public void keyTyped(KeyEvent e) {
+                super.keyTyped(e);
+                FuncoesGerais.SomenteNumeros(e);
+            }
+        });
+        DataAnoConsulta.addKeyListener(new KeyAdapter() {
+            @Override
+            public void keyTyped(KeyEvent e) {
+                super.keyTyped(e);
+                FuncoesGerais.SomenteNumeros(e);
             }
         });
     }
@@ -169,5 +191,22 @@ public class FormConsulta extends JDialog {
 
     private void LimparCampos(JTextField campoGenerico){
         campoGenerico.setText("");
+        String nomeCampo = campoGenerico.getName();
+        if(nomeCampo == null)
+            nomeCampo = "";
+
+        switch (nomeCampo){
+            case "dia":
+                _campoDiaAlterado = true;
+                break;
+            case "mes":
+                _campoMesAlterado = true;
+                break;
+            case "ano":
+                _campoAnoAlterado = true;
+                break;
+            default:
+                break;
+        }
     }
 }

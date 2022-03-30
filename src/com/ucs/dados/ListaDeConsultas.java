@@ -29,7 +29,7 @@ public class ListaDeConsultas {
     }
 
     public static Consulta get(int indice) {
-        return new Consulta();
+        return _listaConsulta.get(indice);
     }
 
     public static List<Consulta> retornaTodos() {

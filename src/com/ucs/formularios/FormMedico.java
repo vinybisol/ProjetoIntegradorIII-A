@@ -2,6 +2,7 @@ package com.ucs.formularios;
 
 import com.ucs.dados.ListaDeMedico;
 import com.ucs.modelos.Medico;
+import com.ucs.util.FuncoesGerais;
 
 import javax.swing.*;
 import java.awt.event.*;
@@ -46,6 +47,13 @@ public class FormMedico extends JDialog {
             @Override
             public void actionPerformed(ActionEvent e) {
                 setBtnOKMedico();
+            }
+        });
+        textCPFMedico.addKeyListener(new KeyAdapter() {
+            @Override
+            public void keyTyped(KeyEvent e) {
+                super.keyTyped(e);
+                FuncoesGerais.SomenteNumeros(e);
             }
         });
     }
