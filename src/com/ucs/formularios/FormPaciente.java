@@ -2,6 +2,7 @@ package com.ucs.formularios;
 
 import com.ucs.dados.ListaDePaciente;
 import com.ucs.modelos.Paciente;
+import com.ucs.util.FuncoesGerais;
 
 import javax.swing.*;
 import java.awt.event.*;
@@ -49,6 +50,13 @@ public class FormPaciente extends JDialog {
             public void actionPerformed(ActionEvent e) {
                 setBtnOKPaciente();
 
+            }
+        });
+        textCPFPaciemte.addKeyListener(new KeyAdapter() {
+            @Override
+            public void keyTyped(KeyEvent e) {
+                super.keyTyped(e);
+                FuncoesGerais.SomenteNumeros(e);
             }
         });
     }

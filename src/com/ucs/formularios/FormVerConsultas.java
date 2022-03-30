@@ -2,12 +2,14 @@ package com.ucs.formularios;
 
 import com.ucs.dados.ListaDeConsultas;
 import com.ucs.modelos.Consulta;
+import com.ucs.util.FuncoesGerais;
 
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.ArrayList;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 import java.util.List;
 
 
@@ -21,6 +23,11 @@ public class FormVerConsultas extends JDialog {
     private JTextField textFiltroMedico;
     private JTextField textFiltroPaciente;
     private JButton btnFiltar;
+    private JLabel lbQuantidade;
+    private JLabel lbTamanho;
+    private JLabel lbBuscarId;
+    private JTextField textBuscarPorId;
+    private JButton btnBuscaId;
     private DefaultTableModel model;
 
     public FormVerConsultas() {
@@ -40,6 +47,34 @@ public class FormVerConsultas extends JDialog {
             @Override
             public void actionPerformed(ActionEvent e) {
                 FiltarConsulta();
+            }
+        });
+        btnBuscaId.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                if(textBuscarPorId.getText().isEmpty())
+                    return;
+                String texto = textBuscarPorId.getText();
+                int index = Integer.parseInt(texto);
+
+                try{
+                    var consulta = ListaDeConsultas.get(index);
+                    var dialog = new FormConsultaPorId(consulta);
+                    dialog.pack();
+                    dialog.criarTabela();
+                    dialog.setVisible(true);
+                }
+                catch (Exception ex){
+                    FuncoesGerais.MensagemInforma("Não existe consultas com esse ID", false);
+                    return;
+                }
+            }
+        });
+        textBuscarPorId.addKeyListener(new KeyAdapter() {
+            @Override
+            public void keyTyped(KeyEvent e) {
+                super.keyTyped(e);
+                FuncoesGerais.SomenteNumeros(e);
             }
         });
     }
@@ -67,6 +102,7 @@ public class FormVerConsultas extends JDialog {
         listaConsulta.forEach(consulta -> model.addRow(new Object[]{consulta.ID, consulta.Data, consulta.Medico, consulta.Paciente}));
         table1.setModel(model);
         table1.revalidate();
+        lbTamanho.setText(String.valueOf(ListaDeConsultas.tamanho()));
     }
 
     private void FiltarConsulta(){
