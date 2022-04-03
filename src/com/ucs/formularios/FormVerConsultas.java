@@ -93,15 +93,15 @@ public class FormVerConsultas extends JDialog {
             model = new DefaultTableModel() {
                 @Override
                 public int getColumnCount() {
-                    return 4;
+                    return 5;
                 }
             }; // essa llnnha é para a quantidde de coluinas
         }
         model.getDataVector().removeAllElements();
         model.setColumnCount(0);
         if (listaConsulta.stream().count() > 0) // se for maior que 0 executa:
-            model.addRow(new Object[]{"ID", "Data/Hora", "Paciente", "Medico"});
-        listaConsulta.forEach(consulta -> model.addRow(new Object[]{consulta.ID, consulta.Data, consulta.Medico, consulta.Paciente}));
+            model.addRow(new Object[]{"ID", "Data", "Hora", "Paciente", "Medico"});
+        listaConsulta.forEach(consulta -> model.addRow(new Object[]{consulta.ID, consulta.Data, consulta.Hora, consulta.Medico, consulta.Paciente}));
         table1.setModel(model);
         table1.revalidate();
         lbTamanho.setText(String.valueOf(ListaDeConsultas.tamanho()));

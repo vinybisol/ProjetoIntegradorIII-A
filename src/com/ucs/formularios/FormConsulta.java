@@ -13,16 +13,20 @@ public class FormConsulta extends JDialog {
     private JButton btnCancelarConsulta;
     private JTextField textIDConsulta;
     private JTextField textDataConsulta;
-    private JTextField textHorarioConsulta;
+    private JTextField textHoraConsulta;
     private JTextField textNomeMedico;
     private JTextField textPaciente;
     private JTextField DataDiaConsulta;
     private JTextField DataAnoConsulta;
     private JTextField DataMesConsulta;
+    private JTextField textMinutoConsulta;
     private boolean _campoAlterado;
     private boolean _campoDiaAlterado;
     private boolean _campoMesAlterado;
     private boolean _campoAnoAlterado;
+    private boolean _campoHoraAlterado;
+    private boolean _campoMinutoAlterado;
+
 
     public FormConsulta() {
         setContentPane(contentPane);
@@ -102,6 +106,22 @@ public class FormConsulta extends JDialog {
                 LimparCampos(DataAnoConsulta);
             }
         });
+        textHoraConsulta.addFocusListener(new FocusAdapter() {
+            @Override
+            public void focusGained(FocusEvent e) {
+                super.focusGained(e);
+                textHoraConsulta.setName("hora");
+                LimparCampos(textHoraConsulta);
+            }
+        });
+        textMinutoConsulta.addFocusListener(new FocusAdapter() {
+            @Override
+            public void focusGained(FocusEvent e) {
+                super.focusGained(e);
+                textMinutoConsulta.setName("minuto");
+                LimparCampos(textMinutoConsulta);
+            }
+        });
 
         DataDiaConsulta.addKeyListener(new KeyAdapter() {
             @Override
@@ -118,6 +138,20 @@ public class FormConsulta extends JDialog {
             }
         });
         DataAnoConsulta.addKeyListener(new KeyAdapter() {
+            @Override
+            public void keyTyped(KeyEvent e) {
+                super.keyTyped(e);
+                FuncoesGerais.SomenteNumeros(e);
+            }
+        });
+        textHoraConsulta.addKeyListener(new KeyAdapter() {
+            @Override
+            public void keyTyped(KeyEvent e) {
+                super.keyTyped(e);
+                FuncoesGerais.SomenteNumeros(e);
+            }
+        });
+        textMinutoConsulta.addKeyListener(new KeyAdapter() {
             @Override
             public void keyTyped(KeyEvent e) {
                 super.keyTyped(e);
@@ -149,6 +183,7 @@ public class FormConsulta extends JDialog {
             consult.Medico = textNomeMedico.getText();
             consult.Paciente = textPaciente.getText();
             consult.Data = DataDiaConsulta.getText() + "/" + DataMesConsulta.getText() + "/" + DataAnoConsulta.getText();
+            consult.Hora = textHoraConsulta.getText() + ":" + textMinutoConsulta.getText();
             ListaDeConsultas.incluirNoFim(consult);
             FuncoesGerais.MensagemInforma("Consulta cadastrada", false);
             dispose();
@@ -182,7 +217,11 @@ public class FormConsulta extends JDialog {
         if(DataAnoConsulta.getText().isEmpty() || DataMesConsulta.getText().isEmpty() || DataDiaConsulta.getText().isEmpty()){
             FuncoesGerais.MensagemInforma("O campo data não pode ficar vazio", false);
         }
-        if(!_campoAlterado || !_campoDiaAlterado || !_campoMesAlterado || !_campoAnoAlterado){
+        if(textHoraConsulta.getText().isEmpty() || textMinutoConsulta.getText().isEmpty()){
+            FuncoesGerais.MensagemInforma("O campo hora não pode ficar vazio", false);
+            return false;
+        }
+        if(!_campoAlterado || !_campoDiaAlterado || !_campoMesAlterado || !_campoAnoAlterado || !_campoHoraAlterado || !_campoMinutoAlterado){
             FuncoesGerais.MensagemInforma("Os campos devem ser preenchidos", false);
             return  false;
         }
@@ -205,8 +244,25 @@ public class FormConsulta extends JDialog {
             case "ano":
                 _campoAnoAlterado = true;
                 break;
+                case "hora":
+                _campoHoraAlterado = true;
+                break;
+            case "minuto":
+                _campoMinutoAlterado = true;
+                break;
+
             default:
                 break;
         }
+    }
+    private void FormartarData(KeyEvent e){
+        if(textHoraConsulta != null && textHoraConsulta.getText().isEmpty()){
+            String hora = textHoraConsulta.getText();
+            StringBuilder horaStrng = new StringBuilder(hora);
+            horaStrng.insert(2, "/");
+            textHoraConsulta.setText(horaStrng.toString());
+
+        }
+
     }
 }

@@ -8,4 +8,5 @@ public class Consulta {
     public String Medico;
     public String Paciente;
     public String Data;
+    public String Hora;
 }

@@ -35,14 +35,14 @@ public class FormConsultaPorId extends JDialog {
             model = new DefaultTableModel(){
                 @Override
                 public int getColumnCount() {
-                    return 4;
+                    return 5;
                 }
             }; // essa llnnha é para a quantidde de coluinas
         }
         model.getDataVector().removeAllElements();
         model.setColumnCount(0);
-        model.addRow(new Object[]{"ID", "Data/Hora", "Medico", "Paciente"});
-        model.addRow(new Object[]{_consulta.ID, _consulta.Data, _consulta.Medico, _consulta.Paciente});
+        model.addRow(new Object[]{"ID", "Data", "Hora", "Medico", "Paciente"});
+        model.addRow(new Object[]{_consulta.ID, _consulta.Data, _consulta.Hora, _consulta.Medico, _consulta.Paciente});
         table1.setModel(model);
         table1.revalidate();
     }
