@@ -63,9 +63,9 @@ public class FormPaciente extends JDialog {
     }
     private void setBtnOKPaciente(){
         var paciente = new Paciente();
-        paciente.Nome = textNomePaciente.getText();
-        paciente.CPF = textCPFPaciemte.getText();
-        paciente.Endereco = textEndereçoPaciente.getText();
+        paciente.setNome(textNomePaciente.getText());
+        paciente.setCPF(textCPFPaciemte.getText());
+        paciente.setEndereco(textEndereçoPaciente.getText());
         ListaDePaciente.adicionarPaciente(paciente);
 
          dispose();

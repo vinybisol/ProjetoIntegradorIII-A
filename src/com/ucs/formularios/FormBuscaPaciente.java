@@ -81,7 +81,7 @@ public class FormBuscaPaciente extends JDialog {
         model.getDataVector().removeAllElements();
         model.setColumnCount(0);
         if(listaDePaciente.stream().count() > 0)
-            listaDePaciente.forEach(paciente -> model.addRow(new Object[]{paciente.Nome, paciente.CPF}));
+            listaDePaciente.forEach(paciente -> model.addRow(new Object[]{paciente.getNome(), paciente.getCPF()}));
         table1.setModel(model);
         table1.revalidate();
     }

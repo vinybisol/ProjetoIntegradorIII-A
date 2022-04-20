@@ -13,7 +13,7 @@ public class ListaDeMedico {
     public static List<Medico> retornaListaDeMedicoPorEspecialidade(String especialidade){
         List<Medico> listaFiltrada = new ArrayList<>();
         _listaMedico.forEach(listaMedico -> {
-            if(listaMedico.Especialidade.equalsIgnoreCase(especialidade)){
+            if(listaMedico.getEspecialidade().equalsIgnoreCase(especialidade)){
                 listaFiltrada.add(listaMedico);
             };
         });

@@ -60,9 +60,9 @@ public class FormMedico extends JDialog {
     }
     private void setBtnOKMedico(){
         var medico = new Medico();
-        medico.Nome = textNomeMedico.getText();
-        medico.CPF = textCPFMedico.getText();
-        medico.Especialidade = textEspecialidadeMedico.getText();
+        medico.setNome(textNomeMedico.getText());
+        medico.setCPF(textCPFMedico.getText());
+        medico.setEspecialidade(textEspecialidadeMedico.getText());
         ListaDeMedico.adicionarMedico(medico);
 
 

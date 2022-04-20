@@ -90,7 +90,7 @@ public class FormSelecionarMedicoEspecialidade extends JDialog {
         model.getDataVector().removeAllElements();
         model.setColumnCount(0);
         if(listaDeMedicos.stream().count() > 0)
-            listaDeMedicos.forEach(medico -> model.addRow(new Object[]{medico.Nome, medico.Especialidade}));
+            listaDeMedicos.forEach(medico -> model.addRow(new Object[]{medico.getNome(), medico.getEspecialidade()}));
         table1.setModel(model);
         table1.revalidate();
     }

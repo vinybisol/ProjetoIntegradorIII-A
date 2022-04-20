@@ -17,7 +17,7 @@ public class ListaDePaciente {
     public static List<Paciente> retornaPorNome(String nomeDoPaciente){
         var listaFiltrada = new ArrayList<Paciente>();
         _listaPaciente.forEach(paciente -> {
-            if(paciente.Nome.equalsIgnoreCase(nomeDoPaciente)){
+            if(paciente.getNome().equalsIgnoreCase(nomeDoPaciente)){
                 listaFiltrada.add(paciente);
             }
         });
