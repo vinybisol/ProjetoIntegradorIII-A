@@ -9,4 +9,7 @@ public class Medico extends Pessoa {
     public String getEspecialidade(){
         return _Especialidade;
     }
+    public String assinatura(){
+        return getNome() + " " + getEspecialidade();
+    }
 }

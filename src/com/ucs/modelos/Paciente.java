@@ -9,4 +9,8 @@ public class Paciente extends Pessoa {
     public String getEndereco(){
         return _endereco;
     }
+
+    public String nomeMaisEndereco(){
+        return getNome() + " " + getEndereco();
+    }
 }

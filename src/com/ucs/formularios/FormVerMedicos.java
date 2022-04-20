@@ -44,15 +44,15 @@ public class FormVerMedicos extends JDialog {
             model = new DefaultTableModel(){
                 @Override
                 public int getColumnCount() {
-                    return 3;
+                    return 4;
                 }
-            }; // essa llnnha é para a quantidde de coluinas
+            };
         }
         model.getDataVector().removeAllElements();
         model.setColumnCount(0);
-        if(listaMedico.stream().count() > 0) // se for maior que 0 executa:
-            model.addRow(new Object[]{"Medico", "CPF", "Especialidade"});
-            listaMedico.forEach(medico -> model.addRow(new Object[]{medico.getNome(), medico.getCPF(), medico.getEspecialidade()}));
+        if(listaMedico.stream().count() > 0)
+            model.addRow(new Object[]{"Medico", "CPF", "Especialidade", "Nome com especialidade"});
+            listaMedico.forEach(medico -> model.addRow(new Object[]{medico.getNome(), medico.getCPF(),medico.getEspecialidade(), medico.assinatura()}));
         table1.setModel(model);
         table1.revalidate();
     }

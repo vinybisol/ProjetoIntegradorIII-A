@@ -4,6 +4,7 @@ import com.ucs.modelos.Consulta;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.atomic.AtomicReference;
 
 public class ListaDeConsultas {
     private static List<Consulta> _listaConsulta = new ArrayList<>();
@@ -31,8 +32,14 @@ public class ListaDeConsultas {
         return ret;
     }
 
-    public static Consulta get(int indice) {
-        return _listaConsulta.get(indice);
+    public static Consulta get(int indice) throws Exception {
+        for (int i = 0; i < _listaConsulta.size(); i++) {
+            long id = _listaConsulta.get(i).ID;
+            if(id == indice){
+                return _listaConsulta.get(i);
+            }
+        }
+        throw new Exception("");
     }
 
     public static List<Consulta> retornaTodos() {

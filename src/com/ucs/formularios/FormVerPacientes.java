@@ -79,15 +79,15 @@ public class FormVerPacientes extends JDialog {
             model = new DefaultTableModel(){
                 @Override
                 public int getColumnCount() {
-                    return 3;
+                    return 4;
                 }
             }; // essa llnnha é para a quantidde de coluinas
         }
         model.getDataVector().removeAllElements();
         model.setColumnCount(0);
         if(listaDePaciente.stream().count() > 0) // se for maior que 0 executa:
-                model.addRow(new Object[]{"Paciente", "CPF", "Endereço"});
-        listaDePaciente.forEach(paciente -> model.addRow(new Object[]{paciente.getNome(), paciente.getCPF(), paciente.getEndereco()}));
+                model.addRow(new Object[]{"Paciente", "CPF", "Endereço", "Nome mais Endereço"});
+        listaDePaciente.forEach(paciente -> model.addRow(new Object[]{paciente.getNome(), paciente.getCPF(), paciente.getEndereco(), paciente.nomeMaisEndereco()}));
         table1.setModel(model);
         table1.revalidate();
     }
