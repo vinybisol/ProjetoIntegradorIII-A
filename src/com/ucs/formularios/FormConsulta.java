@@ -179,7 +179,7 @@ public class FormConsulta extends JDialog {
         // add your code here
         if(ValidaCampos()){
             var consult = new Consulta(){};
-            consult.ID = ListaDeConsultas.proximoId();
+            consult.ID = Integer.parseInt(textIDConsulta.getText());
             consult.Medico = textNomeMedico.getText();
             consult.Paciente = textPaciente.getText();
             consult.Data = DataDiaConsulta.getText() + "/" + DataMesConsulta.getText() + "/" + DataAnoConsulta.getText();

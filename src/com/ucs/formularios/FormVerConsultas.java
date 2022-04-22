@@ -6,10 +6,7 @@ import com.ucs.util.FuncoesGerais;
 
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.awt.event.KeyAdapter;
-import java.awt.event.KeyEvent;
+import java.awt.event.*;
 import java.util.List;
 
 
@@ -66,10 +63,14 @@ public class FormVerConsultas extends JDialog {
                     dialog.criarTabela();
                     dialog.setVisible(true);
                 }
-                catch (Exception ex){
+                catch (NullPointerException ex){
                     FuncoesGerais.MensagemInforma("Não existe consultas com esse ID", false);
                     return;
                 }
+                catch (Exception exception){
+                    FuncoesGerais.MensagemInforma(exception.getMessage(),false);
+                }
+
             }
         });
         textBuscarPorId.addKeyListener(new KeyAdapter() {
@@ -77,6 +78,20 @@ public class FormVerConsultas extends JDialog {
             public void keyTyped(KeyEvent e) {
                 super.keyTyped(e);
                 FuncoesGerais.SomenteNumeros(e);
+            }
+        });
+        textFiltroMedico.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                super.mouseClicked(e);
+                textFiltroMedico.setText("");
+            }
+        });
+        textFiltroPaciente.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                super.mouseClicked(e);
+                textFiltroPaciente.setText("");
             }
         });
     }
@@ -93,15 +108,15 @@ public class FormVerConsultas extends JDialog {
             model = new DefaultTableModel() {
                 @Override
                 public int getColumnCount() {
-                    return 5;
+                    return 6;
                 }
             }; // essa llnnha é para a quantidde de coluinas
         }
         model.getDataVector().removeAllElements();
         model.setColumnCount(0);
         if (listaConsulta.stream().count() > 0) // se for maior que 0 executa:
-            model.addRow(new Object[]{"ID", "Data", "Hora", "Paciente", "Medico"});
-        listaConsulta.forEach(consulta -> model.addRow(new Object[]{consulta.ID, consulta.Data, consulta.Hora, consulta.Medico, consulta.Paciente}));
+            model.addRow(new Object[]{"ID", "Data", "Hora", "Paciente", "Medico", "Descrição"});
+        listaConsulta.forEach(consulta -> model.addRow(new Object[]{consulta.ID, consulta.Data, consulta.Hora, consulta.Medico, consulta.Paciente, consulta.toString()}));
         table1.setModel(model);
         table1.revalidate();
         lbTamanho.setText(String.valueOf(ListaDeConsultas.tamanho()));

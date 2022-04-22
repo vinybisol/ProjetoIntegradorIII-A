@@ -1,7 +1,6 @@
 package com.ucs.formularios;
 
 import com.ucs.dados.ListaDePaciente;
-import com.ucs.modelos.Medico;
 import com.ucs.modelos.Paciente;
 
 import javax.swing.*;
@@ -87,7 +86,7 @@ public class FormVerPacientes extends JDialog {
         model.setColumnCount(0);
         if(listaDePaciente.stream().count() > 0) // se for maior que 0 executa:
                 model.addRow(new Object[]{"Paciente", "CPF", "Endereço", "Nome mais Endereço"});
-        listaDePaciente.forEach(paciente -> model.addRow(new Object[]{paciente.getNome(), paciente.getCPF(), paciente.getEndereco(), paciente.nomeMaisEndereco()}));
+        listaDePaciente.forEach(paciente -> model.addRow(new Object[]{paciente.getNome(), paciente.getCPF(), paciente.getEndereco(), paciente.toString()}));
         table1.setModel(model);
         table1.revalidate();
     }

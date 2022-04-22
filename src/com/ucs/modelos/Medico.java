@@ -12,4 +12,8 @@ public class Medico extends Pessoa {
     public String assinatura(){
         return getNome() + " " + getEspecialidade();
     }
+    @Override
+    public String toString() {
+        return getNome() + " " + getEspecialidade();
+    }
 }

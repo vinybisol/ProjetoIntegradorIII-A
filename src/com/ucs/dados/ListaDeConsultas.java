@@ -39,7 +39,7 @@ public class ListaDeConsultas {
                 return _listaConsulta.get(i);
             }
         }
-        throw new Exception("");
+        throw new NullPointerException("");
     }
 
     public static List<Consulta> retornaTodos() {

@@ -10,7 +10,8 @@ public class Paciente extends Pessoa {
         return _endereco;
     }
 
-    public String nomeMaisEndereco(){
+    @Override
+    public String toString() {
         return getNome() + " " + getEndereco();
     }
 }

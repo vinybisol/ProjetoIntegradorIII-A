@@ -9,4 +9,8 @@ public class Consulta {
     public String Paciente;
     public String Data;
     public String Hora;
+    @Override
+    public String toString(){
+        return "ID: " + ID + " - Medico : " + Medico.toString() + " - Paciente : " + Paciente.toString();
+    }
 }

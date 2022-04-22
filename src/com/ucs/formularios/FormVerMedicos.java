@@ -52,7 +52,7 @@ public class FormVerMedicos extends JDialog {
         model.setColumnCount(0);
         if(listaMedico.stream().count() > 0)
             model.addRow(new Object[]{"Medico", "CPF", "Especialidade", "Nome com especialidade"});
-            listaMedico.forEach(medico -> model.addRow(new Object[]{medico.getNome(), medico.getCPF(),medico.getEspecialidade(), medico.assinatura()}));
+            listaMedico.forEach(medico -> model.addRow(new Object[]{medico.getNome(), medico.getCPF(),medico.getEspecialidade(), medico.toString()}));
         table1.setModel(model);
         table1.revalidate();
     }

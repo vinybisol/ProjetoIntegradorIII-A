@@ -16,4 +16,8 @@ public class Pessoa {
     public String getCPF(){
         return _CPF;
     }
+
+    public String toString(){
+        return "";
+    }
 }
